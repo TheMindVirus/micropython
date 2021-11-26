@@ -11,14 +11,13 @@ You can find the official website at [micropython.org](http://www.micropython.or
 #### Custom Port Source: https://github.com/TheMindVirus/micropython/blob/master/ports/avr8/src/USBtoSerial.c
 
 #### Useful Links:
-https://github.com/tewarid/arduino-usb-serial
-https://tewarid.github.io/2016/08/10/arduino-usb-serial-firmware-from-scratch.html
-https://www.google.com/search?q=arduino+usb2serial&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjW-5HyyLT0AhU8if0HHTq4CCAQ_AUoAXoECAEQAw&biw=1920&bih=969&dpr=1#imgrc=6q2CacPuUSb7DM
-https://store.arduino.cc/products/uno-mini-le
-https://store.arduino.cc/collections/core-family/products/arduino-uno-rev3
-https://www.arduino.cc/en/Main.USBSerial
-https://forum.micropython.org/viewtopic.php?t=685
-https://github.com/micropython/micropython/tree/master/examples/embedding
+https://github.com/tewarid/arduino-usb-serial \
+https://tewarid.github.io/2016/08/10/arduino-usb-serial-firmware-from-scratch.html \
+https://store.arduino.cc/products/uno-mini-le \
+https://store.arduino.cc/collections/core-family/products/arduino-uno-rev3 \
+https://www.arduino.cc/en/Main.USBSerial \
+https://forum.micropython.org/viewtopic.php?t=685 \
+https://github.com/micropython/micropython/tree/master/examples/embedding \
 
 #### Additional Credits:
  * Moco/LUFA USB Firmware for AVR Microcontrollers - Dean Camera @ FourWalledCubicle
@@ -42,7 +41,7 @@ the MicroPython executable.
 See the repository http://github.com/micropython/pyboard for the MicroPython
 board (PyBoard), the officially supported reference electronic circuit board.
 
-Major components in this repository:
+#### Major components in this repository:
 - py/ -- The Core Python implementation, including compiler, runtime, and
   core library.
 - mpy-cross/ -- The MicroPython cross-compiler which is used to turn scripts
@@ -52,7 +51,7 @@ Major components in this repository:
 - ports/avr8/ -- Experimental 8-Bit AVR MicroPython port.
 - tests/ -- Test framework and test scripts.
 
-The subdirectories above may include READMEs with additional info.
+The subdirectories above may include README's with additional info.
 
 External dependencies
 ---------------------
