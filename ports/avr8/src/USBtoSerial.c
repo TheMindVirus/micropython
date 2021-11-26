@@ -90,10 +90,29 @@
 #include "py/gc.h"
 #include "py/stackctrl.h"
 
+// Link to MicroPython Source Statically without using Libraries
+
 #include "py/compile.c"
 #include "py/runtime.c"
 #include "py/gc.c"
 #include "py/stackctrl.c"
+
+// What other C files actually get included by MicroPython?
+
+#include "py/scope.c"
+//#include "py/emit.c"
+//#include "py/asmbase.c"
+//#include "py/persistentcode.c"
+
+//#include "py/argcheck.c"
+//#include "py/bc.c"
+//#include "py/emitcommon.c"
+//#include "py/emitnative.c"
+
+#include "py/qstr.c"
+#include "py/nlr.c"
+#include "py/nlrsetjmp.c"
+#include "py/mpstate.c" //mp_type_SyntaxError came up again
 
 #pragma endregion
 // DEFINITIONS

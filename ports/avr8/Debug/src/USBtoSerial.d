@@ -148,7 +148,9 @@ src/USBtoSerial.d src/USBtoSerial.o: ../src/USBtoSerial.c \
  ../../../py/grammar.h ../../../py/runtime.c ../../../py/parsenum.h \
  ../../../py/objstr.h ../../../py/objtype.h ../../../py/objmodule.h \
  ../../../py/objgenerator.h ../../../py/smallint.h ../../../py/builtin.h \
- ../../../py/gc.c ../../../py/stackctrl.c
+ ../../../py/gc.c ../../../py/stackctrl.c ../../../py/scope.c \
+ ../../../py/qstr.c ../../../py/nlr.c ../../../py/nlrsetjmp.c \
+ ../../../py/mpstate.c
 
 d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -501,3 +503,13 @@ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../py/gc.c:
 
 ../../../py/stackctrl.c:
+
+../../../py/scope.c:
+
+../../../py/qstr.c:
+
+../../../py/nlr.c:
+
+../../../py/nlrsetjmp.c:
+
+../../../py/mpstate.c:
