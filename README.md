@@ -7,6 +7,23 @@ specifically the Atmega16U2 found on the Arduino USB2SERIAL and Arduino UNO Boar
 The project aims to put an implementation of Python 3.x on microcontrollers and small embedded systems.
 You can find the official website at [micropython.org](http://www.micropython.org).
 
+Original Source: https://github.com/micropython/micropython/tree/master/ports/minimal
+Custom Port Source: https://github.com/TheMindVirus/micropython/blob/master/ports/avr8/src/USBtoSerial.c
+
+Useful Links:
+https://github.com/tewarid/arduino-usb-serial
+https://tewarid.github.io/2016/08/10/arduino-usb-serial-firmware-from-scratch.html
+https://www.google.com/search?q=arduino+usb2serial&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjW-5HyyLT0AhU8if0HHTq4CCAQ_AUoAXoECAEQAw&biw=1920&bih=969&dpr=1#imgrc=6q2CacPuUSb7DM
+https://store.arduino.cc/products/uno-mini-le
+https://store.arduino.cc/collections/core-family/products/arduino-uno-rev3
+https://www.arduino.cc/en/Main.USBSerial
+https://forum.micropython.org/viewtopic.php?t=685
+https://github.com/micropython/micropython/tree/master/examples/embedding
+
+Additional Credits:
+ * Moco/LUFA USB Firmware for AVR Microcontrollers - Dean Camera @ FourWalledCubicle
+ * Arduino, Atmel, Adafruit Industries, Microchip, Microsoft, Raspberry Pi Foundation, et al.
+
 ### WARNING: this project is in beta stage and is subject to changes of the code-base, including project-wide name changes and API changes.
 
 MicroPython implements the entire Python 3.4 syntax (including exceptions,
