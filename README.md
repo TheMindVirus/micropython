@@ -1,17 +1,13 @@
-[![CI badge](https://github.com/micropython/micropython/workflows/unix%20port/badge.svg)](https://github.com/micropython/micropython/actions?query=branch%3Amaster+event%3Apush) [![codecov](https://codecov.io/gh/micropython/micropython/branch/master/graph/badge.svg?token=I92PfD05sD)](https://codecov.io/gh/micropython/micropython)
+# MicroPython
 
-The MicroPython project
-=======================
-<p align="center">
-  <img src="https://raw.githubusercontent.com/micropython/micropython/master/logo/upython-with-micro.jpg" alt="MicroPython Logo"/>
-</p>
+<video src="https://www.youtube.com/watch?v=07vG-_CcDG0" alt="CircuitPython"></video>
 
-This is the MicroPython project, which aims to put an implementation
-of Python 3.x on microcontrollers and small embedded systems.
+Experimental Port of The MicroPython Project to 8-Bit AVR Architecture Devices, 
+specifically the Atmega16U2 found on the Arduino USB2SERIAL and Arduino UNO Boards.
+The project aims to put an implementation of Python 3.x on microcontrollers and small embedded systems.
 You can find the official website at [micropython.org](http://www.micropython.org).
 
-WARNING: this project is in beta stage and is subject to changes of the
-code-base, including project-wide name changes and API changes.
+### WARNING: this project is in beta stage and is subject to changes of the code-base, including project-wide name changes and API changes.
 
 MicroPython implements the entire Python 3.4 syntax (including exceptions,
 `with`, `yield from`, etc., and additionally `async`/`await` keywords from
