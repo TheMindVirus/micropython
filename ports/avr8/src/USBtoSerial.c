@@ -181,7 +181,7 @@ mp_obj_t execute_from_str(const char *str)
 	else { return (mp_obj_t)nlr.ret_val; } // Uncaught Exception
 }
 
-uint mp_import_stat(const char *path) { return MP_IMPORT_STAT_NO_EXIST; }
+//uint mp_import_stat(const char *path) { return MP_IMPORT_STAT_NO_EXIST; } //lexer.h L205
 
 void nlr_jump_fail(void* val) { printf("FATAL: uncaught NLR %p\n", val); exit(1); }
 	
@@ -361,5 +361,4 @@ void EVENT_CDC_Device_LineEncodingChanged(USB_ClassInfo_CDC_Device_t* const CDCI
 
 #pragma endregion
 
-// (V) \\
-\\/\V/\//
+// (V) \\/\\//\//
