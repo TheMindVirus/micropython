@@ -17,7 +17,7 @@ https://store.arduino.cc/products/uno-mini-le \
 https://store.arduino.cc/collections/core-family/products/arduino-uno-rev3 \
 https://www.arduino.cc/en/Main.USBSerial \
 https://forum.micropython.org/viewtopic.php?t=685 \
-https://github.com/micropython/micropython/tree/master/examples/embedding \
+https://github.com/micropython/micropython/tree/master/examples/embedding
 
 #### Additional Credits:
  * Moco/LUFA USB Firmware for AVR Microcontrollers - Dean Camera @ FourWalledCubicle
