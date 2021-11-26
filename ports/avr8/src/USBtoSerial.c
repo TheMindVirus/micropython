@@ -90,6 +90,11 @@
 #include "py/gc.h"
 #include "py/stackctrl.h"
 
+#include "py/compile.c"
+#include "py/runtime.c"
+#include "py/gc.c"
+#include "py/stackctrl.c"
+
 #pragma endregion
 // DEFINITIONS
 #pragma region

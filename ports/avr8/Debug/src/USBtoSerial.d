@@ -143,7 +143,12 @@ src/USBtoSerial.d src/USBtoSerial.o: ../src/USBtoSerial.c \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\setjmp.h \
  ../../../py/objlist.h ../../../py/objexcept.h ../../../py/objtuple.h \
  ../../../py/pystack.h ../../../py/objfun.h ../../../py/gc.h \
- ../../../py/stackctrl.h
+ ../../../py/stackctrl.h ../../../py/compile.c ../../../py/scope.h \
+ ../../../py/emit.h ../../../py/asmbase.h ../../../py/persistentcode.h \
+ ../../../py/grammar.h ../../../py/runtime.c ../../../py/parsenum.h \
+ ../../../py/objstr.h ../../../py/objtype.h ../../../py/objmodule.h \
+ ../../../py/objgenerator.h ../../../py/smallint.h ../../../py/builtin.h \
+ ../../../py/gc.c ../../../py/stackctrl.c
 
 d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -464,3 +469,35 @@ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../py/gc.h:
 
 ../../../py/stackctrl.h:
+
+../../../py/compile.c:
+
+../../../py/scope.h:
+
+../../../py/emit.h:
+
+../../../py/asmbase.h:
+
+../../../py/persistentcode.h:
+
+../../../py/grammar.h:
+
+../../../py/runtime.c:
+
+../../../py/parsenum.h:
+
+../../../py/objstr.h:
+
+../../../py/objtype.h:
+
+../../../py/objmodule.h:
+
+../../../py/objgenerator.h:
+
+../../../py/smallint.h:
+
+../../../py/builtin.h:
+
+../../../py/gc.c:
+
+../../../py/stackctrl.c:
