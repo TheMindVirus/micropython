@@ -98,7 +98,7 @@
 #include "py/stackctrl.c"
 
 // What other C files actually get included by MicroPython?
-
+/*
 #include "py/scope.c"
 //#include "py/emit.c"
 //#include "py/asmbase.c"
@@ -113,6 +113,191 @@
 #include "py/nlr.c"
 #include "py/nlrsetjmp.c"
 #include "py/mpstate.c" //mp_type_SyntaxError came up again
+*/
+
+// This is that list...
+
+#include "py/mpstate.c"
+#include "py/nlr.c"
+#include "py/nlrx86.c" // ???
+#include "py/nlrx64.c" // ???
+#include "py/nlrthumb.c" // ???
+#include "py/nlraarch64.c" // ???
+#include "py/nlrpowerpc.c" // ???
+#include "py/nlrxtensa.c" // ???
+#include "py/nlrsetjmp.c"
+#include "py/malloc.c"
+#include "py/gc.c"
+#include "py/pystack.c"
+#include "py/qstr.c"
+#include "py/vstr.c"
+#include "py/mpprint.c"
+#include "py/unicode.c"
+#include "py/mpz.c"
+#include "py/reader.c"
+#include "py/lexer.c"
+#include "py/parse.c"
+#include "py/scope.c"
+#include "py/compile.c"
+#include "py/emitcommon.c"
+#include "py/emitbc.c"
+#include "py/asmbase.c"
+#include "py/asmx64.c" // ???
+#include "py/emitnx64.c" // ???
+#include "py/asmx86.c" // ???
+#include "py/emitnx86.c" // ???
+#include "py/asmthumb.c" // ???
+#include "py/emitnthumb.c" // ???
+#include "py/emitinlinethumb.c" // ???
+#include "py/asmarm.c" // ???
+#include "py/emitnarm.c" // ???
+#include "py/asmxtensa.c" // ???
+#include "py/emitnxtensa.c" // ???
+#include "py/emitinlinextensa.c" // ???
+#include "py/emitnxtensawin.c" // ???
+#include "py/formatfloat.c"
+#include "py/parsenumbase.c"
+#include "py/parsenum.c"
+#include "py/emitglue.c"
+#include "py/persistentcode.c"
+#include "py/runtime.c"
+#include "py/runtime_utils.c"
+#include "py/scheduler.c"
+#include "py/nativeglue.c"
+#include "py/pairheap.c"
+#include "py/ringbuf.c"
+#include "py/stackctrl.c"
+#include "py/argcheck.c"
+#include "py/warning.c"
+#include "py/profile.c"
+#include "py/map.c"
+#include "py/obj.c"
+#include "py/objarray.c"
+#include "py/objattrtuple.c"
+#include "py/objbool.c"
+#include "py/objboundmeth.c"
+#include "py/objcell.c"
+#include "py/objclosure.c"
+#include "py/objcomplex.c"
+#include "py/objdeque.c"
+#include "py/objdict.c"
+#include "py/objenumerate.c"
+#include "py/objexcept.c"
+#include "py/objfilter.c"
+#include "py/objfloat.c"
+#include "py/objfun.c"
+#include "py/objgenerator.c"
+#include "py/objgetitemiter.c"
+#include "py/objint.c"
+#include "py/objint_longlong.c"
+#include "py/objint_mpz.c"
+#include "py/objlist.c"
+#include "py/objmap.c"
+#include "py/objmodule.c"
+#include "py/objobject.c"
+#include "py/objpolyiter.c"
+#include "py/objproperty.c"
+#include "py/objnone.c"
+#include "py/objnamedtuple.c"
+#include "py/objrange.c"
+#include "py/objreversed.c"
+#include "py/objset.c"
+#include "py/objsingleton.c"
+#include "py/objslice.c"
+#include "py/objstr.c"
+#include "py/objstrunicode.c"
+#include "py/objstringio.c"
+#include "py/objtuple.c"
+#include "py/objtype.c"
+#include "py/objzip.c"
+#include "py/opmethods.c"
+#include "py/sequence.c"
+#include "py/stream.c"
+#include "py/binary.c"
+#include "py/builtinimport.c"
+#include "py/builtinevex.c"
+#include "py/builtinhelp.c"
+#include "py/modarray.c"
+#include "py/modbuiltins.c"
+#include "py/modcollections.c"
+#include "py/modgc.c"
+#include "py/modio.c"
+#include "py/modmath.c"
+#include "py/modcmath.c"
+#include "py/modmicropython.c"
+#include "py/modstruct.c"
+#include "py/modsys.c"
+#include "py/moduerrno.c"
+#include "py/modthread.c"
+#include "py/vm.c"
+#include "py/bc.c"
+#include "py/showbc.c"
+#include "py/repl.c" // !!!
+#include "py/smallint.c"
+#include "py/frozenmod.c"
+
+#include "extmod/moduasyncio.c"
+#include "extmod/moductypes.c"
+#include "extmod/modujson.c"
+#include "extmod/modure.c"
+#include "extmod/moduzlib.c"
+#include "extmod/moduheapq.c"
+#include "extmod/modutimeq.c"
+#include "extmod/moduhashlib.c"
+#include "extmod/moducryptolib.c"
+#include "extmod/modubinascii.c"
+#include "extmod/virtpin.c"
+#include "extmod/machine_bitstream.c"
+#include "extmod/machine_mem.c"
+#include "extmod/machine_pinbase.c"
+#include "extmod/machine_signal.c"
+#include "extmod/machine_pulse.c"
+#include "extmod/machine_pwm.c"
+#include "extmod/machine_i2c.c"
+#include "extmod/machine_spi.c"
+#include "extmod/modbluetooth.c"
+#include "extmod/modussl_axtls.c"
+#include "extmod/modussl_mbedtls.c"
+#include "extmod/moduplatform.c"
+#include "extmod/modurandom.c"
+#include "extmod/moduselect.c"
+#include "extmod/moduwebsocket.c"
+#include "extmod/modwebrepl.c"
+#include "extmod/modframebuf.c"
+#include "extmod/vfs.c"
+#include "extmod/vfs_blockdev.c"
+#include "extmod/vfs_reader.c"
+#include "extmod/vfs_posix.c"
+#include "extmod/vfs_posix_file.c"
+#include "extmod/vfs_fat.c"
+#include "extmod/vfs_fat_diskio.c"
+#include "extmod/vfs_fat_file.c"
+#include "extmod/vfs_lfs.c"
+#include "extmod/utime_mphal.c"
+#include "extmod/uos_dupterm.c"
+
+#include "shared/libc/abort_.c"
+#include "shared/libc/printf.c"
+/*
+#include "ports/unix/main.c"
+#include "ports/unix/gccollect.c"
+#include "ports/unix/unix_mphal.c"
+#include "ports/unix/input.c"
+#include "ports/unix/modmachine.c"
+#include "ports/unix/modos.c"
+#include "ports/unix/moduselect.c"
+#include "ports/unix/alloc.c"
+#include "ports/unix/coverage.c"
+#include "ports/unix/fatfs_port.c"
+*/
+
+#include "ports/minimal/uart_core.c"
+
+#include "shared/runtime/gchelper_generic.c"
+
+#include "shared/timeutils/timeutils.c"
+
+// Now the problem is redeclarations of gcc-native instructions and no avr8-specific instructions...
 
 #pragma endregion
 // DEFINITIONS
