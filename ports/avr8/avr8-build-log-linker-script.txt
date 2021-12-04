@@ -1,0 +1,615 @@
+------ Rebuild All started: Project: LUFA_PROJECTS_USB_TO_SERIAL1, Configuration: Debug AVR ------
+Build started.
+Project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj" (Clean target(s)):
+Target "Clean" in file "D:\Program Files (x86)\Atmel\Studio\7.0\Vs\Compiler.targets" from project "C:\Users\Alastair\Documents\GitHub\micropython\ports\avr8\LUFA_PROJECTS_USB_TO_SERIAL1.cproj" (entry point):
+	Using "RunCompilerTask" task from assembly "D:\Program Files (x86)\Atmel\Studio\7.0\Extensions\Application\AvrGCC.dll".
+	Task "RunCompilerTask"
+		Shell Utils Path D:\Program Files (x86)\Atmel\Studio\7.0\shellUtils
+		D:\Program Files (x86)\Atmel\Studio\7.0\shellUtils\make.exe clean 
+		rm -rf  src/mphal.o src/USBtoSerial.o src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o src/LUFA/LUFA/Drivers/USB/Core/Events.o src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o src/LUFA/LUFA/Drivers/USB/Core/USBTask.o   
+		rm -rf  src/mphal.d src/USBtoSerial.d src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.d src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.d src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.d src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.d src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.d src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.d src/LUFA/LUFA/Drivers/USB/Core/Events.d src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d src/LUFA/LUFA/Drivers/USB/Core/USBTask.d   
+		rm -rf "LUFA_PROJECTS_USB_TO_SERIAL1.elf" "LUFA_PROJECTS_USB_TO_SERIAL1.a" "LUFA_PROJECTS_USB_TO_SERIAL1.hex" "LUFA_PROJECTS_USB_TO_SERIAL1.lss" "LUFA_PROJECTS_USB_TO_SERIAL1.eep" "LUFA_PROJECTS_USB_TO_SERIAL1.map" "LUFA_PROJECTS_USB_TO_SERIAL1.srec" "LUFA_PROJECTS_USB_TO_SERIAL1.usersignatures"
+	Done executing task "RunCompilerTask".
+Done building target "Clean" in project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj".
+Done building project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj".
+
+Build succeeded.
+------ Rebuild All started: Project: LUFA_PROJECTS_USB_TO_SERIAL1, Configuration: Debug AVR ------
+Build started.
+Project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "D:\Program Files (x86)\Atmel\Studio\7.0\Vs\Compiler.targets" from project "C:\Users\Alastair\Documents\GitHub\micropython\ports\avr8\LUFA_PROJECTS_USB_TO_SERIAL1.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		Shell Utils Path D:\Program Files (x86)\Atmel\Studio\7.0\shellUtils
+		D:\Program Files (x86)\Atmel\Studio\7.0\shellUtils\make.exe all --jobs 8 --output-sync 
+		Building file: ../src/mphal.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/mphal.d" -MT"src/mphal.d" -MT"src/mphal.o"   -o "src/mphal.o" "../src/mphal.c" 
+		Finished building: ../src/mphal.c
+		Building file: ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d" -MT"src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d" -MT"src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o"   -o "src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o" "../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o" "../src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o" "../src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.d" -MT"src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o"   -o "src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o" "../src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o" "../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o" "../src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o" "../src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/Events.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/Events.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/Events.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/Events.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/Events.o" "../src/LUFA/LUFA/Drivers/USB/Core/Events.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/Events.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o" "../src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.c
+		Building file: ../src/LUFA/LUFA/Drivers/USB/Core/USBTask.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/LUFA/LUFA/Drivers/USB/Core/USBTask.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/USBTask.d" -MT"src/LUFA/LUFA/Drivers/USB/Core/USBTask.o"   -o "src/LUFA/LUFA/Drivers/USB/Core/USBTask.o" "../src/LUFA/LUFA/Drivers/USB/Core/USBTask.c" 
+		Finished building: ../src/LUFA/LUFA/Drivers/USB/Core/USBTask.c
+		Building file: ../src/USBtoSerial.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		In file included from ../../../py/emitbc.c:31:0,
+		                 from ../src/USBtoSerial.c:143:
+		../../../py/emitbc.c: In function 'emit_write_code_info_qstr':
+C:\Users\Alastair\Documents\GitHub\micropython\py\emitbc.c(130,17): warning: right shift count >= width of type [-Wshift-count-overflow]
+		     assert((qst >> 16) == 0);
+		                 ^
+		../../../py/emitbc.c: In function 'emit_write_bytecode_byte_qstr':
+C:\Users\Alastair\Documents\GitHub\micropython\py\emitbc.c(235,17): warning: right shift count >= width of type [-Wshift-count-overflow]
+		     assert((qst >> 16) == 0);
+		                 ^
+		In file included from ../src/USBtoSerial.c:161:0:
+		../../../py/emitglue.c: In function 'mp_emit_glue_assign_bytecode':
+C:\Users\Alastair\Documents\GitHub\micropython\py\emitglue.c(89,18): warning: unused variable 'len' [-Wunused-variable]
+		     const size_t len = 0;
+		                  ^
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "src/USBtoSerial.d" -MT"src/USBtoSerial.d" -MT"src/USBtoSerial.o"   -o "src/USBtoSerial.o" "../src/USBtoSerial.c" 
+		Finished building: ../src/USBtoSerial.c
+		Building target: LUFA_PROJECTS_USB_TO_SERIAL1.elf
+		Invoking: AVR/GNU Linker : 5.4.0
+		"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe" -o LUFA_PROJECTS_USB_TO_SERIAL1.elf  src/mphal.o src/USBtoSerial.o src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o src/LUFA/LUFA/Drivers/USB/Core/Events.o src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o src/LUFA/LUFA/Drivers/USB/Core/USBTask.o   -Wl,-Map="LUFA_PROJECTS_USB_TO_SERIAL1.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -Wl,-section-start=.data=0x800000 -Wl,-section-start=.bss=-0x880000  -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -Wl,--verbose  
+		GNU ld (AVR_8_bit_GNU_Toolchain_3.6.2_1778) 2.26.20160125
+		  Supported emulations:
+		   avr2
+		   avr1
+		   avr25
+		   avr3
+		   avr31
+		   avr35
+		   avr4
+		   avr5
+		   avr51
+		   avr6
+		   avrxmega1
+		   avrxmega2
+		   avrxmega3
+		   avrxmega4
+		   avrxmega5
+		   avrxmega6
+		   avrxmega7
+		   avrtiny
+		opened script file d:\program files (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\bin\../lib\ldscripts/avr51.xn
+		using external linker script:
+		==================================================
+		/* Script for -n: mix text and data on same page */
+		/* Copyright (C) 2014-2015 Free Software Foundation, Inc.
+		   Copying and distribution of this script, with or without modification,
+		   are permitted in any medium without royalty provided the copyright
+		   notice and this notice are preserved.  */
+		OUTPUT_FORMAT("elf32-avr","elf32-avr","elf32-avr")
+		OUTPUT_ARCH(avr:51)
+		__TEXT_REGION_ORIGIN__ = DEFINED(__TEXT_REGION_ORIGIN__) ? __TEXT_REGION_ORIGIN__ : 0;
+		__DATA_REGION_ORIGIN__ = DEFINED(__DATA_REGION_ORIGIN__) ? __DATA_REGION_ORIGIN__ : 0x800100;
+		__TEXT_REGION_LENGTH__ = DEFINED(__TEXT_REGION_LENGTH__) ? __TEXT_REGION_LENGTH__ : 128K;
+		__DATA_REGION_LENGTH__ = DEFINED(__DATA_REGION_LENGTH__) ? __DATA_REGION_LENGTH__ : 0xff00;
+		__EEPROM_REGION_LENGTH__ = DEFINED(__EEPROM_REGION_LENGTH__) ? __EEPROM_REGION_LENGTH__ : 64K;
+		__FUSE_REGION_LENGTH__ = DEFINED(__FUSE_REGION_LENGTH__) ? __FUSE_REGION_LENGTH__ : 1K;
+		__LOCK_REGION_LENGTH__ = DEFINED(__LOCK_REGION_LENGTH__) ? __LOCK_REGION_LENGTH__ : 1K;
+		__SIGNATURE_REGION_LENGTH__ = DEFINED(__SIGNATURE_REGION_LENGTH__) ? __SIGNATURE_REGION_LENGTH__ : 1K;
+		__USER_SIGNATURE_REGION_LENGTH__ = DEFINED(__USER_SIGNATURE_REGION_LENGTH__) ? __USER_SIGNATURE_REGION_LENGTH__ : 1K;
+		MEMORY
+		{
+		  text   (rx)   : ORIGIN = __TEXT_REGION_ORIGIN__, LENGTH = __TEXT_REGION_LENGTH__
+		  data   (rw!x) : ORIGIN = __DATA_REGION_ORIGIN__, LENGTH = __DATA_REGION_LENGTH__
+		  eeprom (rw!x) : ORIGIN = 0x810000, LENGTH = __EEPROM_REGION_LENGTH__
+		  fuse      (rw!x) : ORIGIN = 0x820000, LENGTH = __FUSE_REGION_LENGTH__
+		  lock      (rw!x) : ORIGIN = 0x830000, LENGTH = __LOCK_REGION_LENGTH__
+		  signature (rw!x) : ORIGIN = 0x840000, LENGTH = __SIGNATURE_REGION_LENGTH__
+		  user_signatures (rw!x) : ORIGIN = 0x850000, LENGTH = __USER_SIGNATURE_REGION_LENGTH__
+		}
+		SECTIONS
+		{
+		  /* Read-only sections, merged into text segment: */
+		  .hash          : { *(.hash)		}
+		  .dynsym        : { *(.dynsym)		}
+		  .dynstr        : { *(.dynstr)		}
+		  .gnu.version   : { *(.gnu.version)	}
+		  .gnu.version_d   : { *(.gnu.version_d)	}
+		  .gnu.version_r   : { *(.gnu.version_r)	}
+		  .rel.init      : { *(.rel.init)		}
+		  .rela.init     : { *(.rela.init)	}
+		  .rel.text      :
+		    {
+		      *(.rel.text)
+		      *(.rel.text.*)
+		      *(.rel.gnu.linkonce.t*)
+		    }
+		  .rela.text     :
+		    {
+		      *(.rela.text)
+		      *(.rela.text.*)
+		      *(.rela.gnu.linkonce.t*)
+		    }
+		  .rel.fini      : { *(.rel.fini)		}
+		  .rela.fini     : { *(.rela.fini)	}
+		  .rel.rodata    :
+		    {
+		      *(.rel.rodata)
+		      *(.rel.rodata.*)
+		      *(.rel.gnu.linkonce.r*)
+		    }
+		  .rela.rodata   :
+		    {
+		      *(.rela.rodata)
+		      *(.rela.rodata.*)
+		      *(.rela.gnu.linkonce.r*)
+		    }
+		  .rel.data      :
+		    {
+		      *(.rel.data)
+		      *(.rel.data.*)
+		      *(.rel.gnu.linkonce.d*)
+		    }
+		  .rela.data     :
+		    {
+		      *(.rela.data)
+		      *(.rela.data.*)
+		      *(.rela.gnu.linkonce.d*)
+		    }
+		  .rel.ctors     : { *(.rel.ctors)	}
+		  .rela.ctors    : { *(.rela.ctors)	}
+		  .rel.dtors     : { *(.rel.dtors)	}
+		  .rela.dtors    : { *(.rela.dtors)	}
+		  .rel.got       : { *(.rel.got)		}
+		  .rela.got      : { *(.rela.got)		}
+		  .rel.bss       : { *(.rel.bss)		}
+		  .rela.bss      : { *(.rela.bss)		}
+		  .rel.plt       : { *(.rel.plt)		}
+		  .rela.plt      : { *(.rela.plt)		}
+		  /* Internal text space or external memory.  */
+		  .text   :
+		  {
+		    *(.vectors)
+		    KEEP(*(.vectors))
+		    /* For data that needs to reside in the lower 64k of progmem.  */
+		     *(.progmem.gcc*)
+		    /* PR 13812: Placing the trampolines here gives a better chance
+		       that they will be in range of the code that uses them.  */
+		    . = ALIGN(2);
+		     __trampolines_start = . ;
+		    /* The jump trampolines for the 16-bit limited relocs will reside here.  */
+		    *(.trampolines)
+		     *(.trampolines*)
+		     __trampolines_end = . ;
+		    /* avr-libc expects these data to reside in lower 64K. */
+		     *libprintf_flt.a:*(.progmem.data)
+		     *libc.a:*(.progmem.data)
+		     *(.progmem*)
+		    . = ALIGN(2);
+		    /* For future tablejump instruction arrays for 3 byte pc devices.
+		       We don't relax jump/call instructions within these sections.  */
+		    *(.jumptables)
+		     *(.jumptables*)
+		    /* For code that needs to reside in the lower 128k progmem.  */
+		    *(.lowtext)
+		     *(.lowtext*)
+		     __ctors_start = . ;
+		     *(.ctors)
+		     __ctors_end = . ;
+		     __dtors_start = . ;
+		     *(.dtors)
+		     __dtors_end = . ;
+		    KEEP(SORT(*)(.ctors))
+		    KEEP(SORT(*)(.dtors))
+		    /* From this point on, we don't bother about wether the insns are
+		       below or above the 16 bits boundary.  */
+		    *(.init0)  /* Start here after reset.  */
+		    KEEP (*(.init0))
+		    *(.init1)
+		    KEEP (*(.init1))
+		    *(.init2)  /* Clear __zero_reg__, set up stack pointer.  */
+		    KEEP (*(.init2))
+		    *(.init3)
+		    KEEP (*(.init3))
+		    *(.init4)  /* Initialize data and BSS.  */
+		    KEEP (*(.init4))
+		    *(.init5)
+		    KEEP (*(.init5))
+		    *(.init6)  /* C++ constructors.  */
+		    KEEP (*(.init6))
+		    *(.init7)
+		    KEEP (*(.init7))
+		    *(.init8)
+		    KEEP (*(.init8))
+		    *(.init9)  /* Call main().  */
+		    KEEP (*(.init9))
+		    *(.text)
+		    . = ALIGN(2);
+		     *(.text.*)
+		    . = ALIGN(2);
+		    *(.fini9)  /* _exit() starts here.  */
+		    KEEP (*(.fini9))
+		    *(.fini8)
+		    KEEP (*(.fini8))
+		    *(.fini7)
+		    KEEP (*(.fini7))
+		    *(.fini6)  /* C++ destructors.  */
+		    KEEP (*(.fini6))
+		    *(.fini5)
+		    KEEP (*(.fini5))
+		    *(.fini4)
+		    KEEP (*(.fini4))
+		    *(.fini3)
+		    KEEP (*(.fini3))
+		    *(.fini2)
+		    KEEP (*(.fini2))
+		    *(.fini1)
+		    KEEP (*(.fini1))
+		    *(.fini0)  /* Infinite loop after program termination.  */
+		    KEEP (*(.fini0))
+		     _etext = . ;
+		  }  > text
+		  .data          :
+		  {
+		     PROVIDE (__data_start = .) ;
+		    *(.data)
+		     *(.data*)
+		    *(.gnu.linkonce.d*)
+		    *(.rodata)  /* We need to include .rodata here if gcc is used */
+		     *(.rodata*) /* with -fdata-sections.  */
+		    *(.gnu.linkonce.r*)
+		    . = ALIGN(2);
+		     _edata = . ;
+		     PROVIDE (__data_end = .) ;
+		  }  > data AT> text
+		  .bss  ADDR(.data) + SIZEOF (.data)   : AT (ADDR (.bss))
+		  {
+		     PROVIDE (__bss_start = .) ;
+		    *(.bss)
+		     *(.bss*)
+		    *(COMMON)
+		     PROVIDE (__bss_end = .) ;
+		  }  > data
+		   __data_load_start = LOADADDR(.data);
+		   __data_load_end = __data_load_start + SIZEOF(.data);
+		  /* Global data not cleared after reset.  */
+		  .noinit  ADDR(.bss) + SIZEOF (.bss)  :  AT (ADDR (.noinit))
+		  {
+		     PROVIDE (__noinit_start = .) ;
+		    *(.noinit*)
+		     PROVIDE (__noinit_end = .) ;
+		     _end = . ;
+		     PROVIDE (__heap_start = .) ;
+		  }  > data
+		  .eeprom  :
+		  {
+		    /* See .data above...  */
+		    KEEP(*(.eeprom*))
+		     __eeprom_end = . ;
+		  }  > eeprom
+		  .fuse  :
+		  {
+		    KEEP(*(.fuse))
+		    KEEP(*(.lfuse))
+		    KEEP(*(.hfuse))
+		    KEEP(*(.efuse))
+		  }  > fuse
+		  .lock  :
+		  {
+		    KEEP(*(.lock*))
+		  }  > lock
+		  .signature  :
+		  {
+		    KEEP(*(.signature*))
+		  }  > signature
+		  .user_signatures  :
+		  {
+		    KEEP(*(.user_signatures*))
+		  }  > user_signatures
+		  /* Stabs debugging sections.  */
+		  .stab 0 : { *(.stab) }
+		  .stabstr 0 : { *(.stabstr) }
+		  .stab.excl 0 : { *(.stab.excl) }
+		  .stab.exclstr 0 : { *(.stab.exclstr) }
+		  .stab.index 0 : { *(.stab.index) }
+		  .stab.indexstr 0 : { *(.stab.indexstr) }
+		  .comment 0 : { *(.comment) }
+		  .note.gnu.build-id : { *(.note.gnu.build-id) }
+		  /* DWARF debug sections.
+		     Symbols in the DWARF debugging sections are relative to the beginning
+		     of the section so we begin them at 0.  */
+		  /* DWARF 1 */
+		  .debug          0 : { *(.debug) }
+		  .line           0 : { *(.line) }
+		  /* GNU DWARF 1 extensions */
+		  .debug_srcinfo  0 : { *(.debug_srcinfo) }
+		  .debug_sfnames  0 : { *(.debug_sfnames) }
+		  /* DWARF 1.1 and DWARF 2 */
+		  .debug_aranges  0 : { *(.debug_aranges) }
+		  .debug_pubnames 0 : { *(.debug_pubnames) }
+		  /* DWARF 2 */
+		  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+		  .debug_abbrev   0 : { *(.debug_abbrev) }
+		  .debug_line     0 : { *(.debug_line .debug_line.* .debug_line_end ) }
+		  .debug_frame    0 : { *(.debug_frame) }
+		  .debug_str      0 : { *(.debug_str) }
+		  .debug_loc      0 : { *(.debug_loc) }
+		  .debug_macinfo  0 : { *(.debug_macinfo) }
+		  /* SGI/MIPS DWARF 2 extensions */
+		  .debug_weaknames 0 : { *(.debug_weaknames) }
+		  .debug_funcnames 0 : { *(.debug_funcnames) }
+		  .debug_typenames 0 : { *(.debug_typenames) }
+		  .debug_varnames  0 : { *(.debug_varnames) }
+		  /* DWARF 3 */
+		  .debug_pubtypes 0 : { *(.debug_pubtypes) }
+		  .debug_ranges   0 : { *(.debug_ranges) }
+		  /* DWARF Extension.  */
+		  .debug_macro    0 : { *(.debug_macro) }
+		}
+		==================================================
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/crtat90usb1287.o succeeded
+		D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/crtat90usb1287.o
+		attempt to open src/mphal.o succeeded
+		src/mphal.o
+		attempt to open src/USBtoSerial.o succeeded
+		src/USBtoSerial.o
+		attempt to open src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/Events.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/Events.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o
+		attempt to open src/LUFA/LUFA/Drivers/USB/Core/USBTask.o succeeded
+		src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/libm.so failed
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libm.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51/libm.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libm.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/libm.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a succeeded
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/libgcc.so failed
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libgcc.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51/libgcc.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a succeeded
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_udivmodhi4.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_divmodhi4.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_udivmodsi4.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_exit.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_copy_data.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_clear_bss.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_umulhisi3.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_negdi2.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_ashldi3.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a)_ashrdi3.o
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/libm.so failed
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libm.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51/libm.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libm.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/libm.so failed
+address 0x802942 of LUFA_PROJECTS_USB_TO_SERIAL1.elf section `.data' is not within region `data'address 0xff784202 of LUFA_PROJECTS_USB_TO_SERIAL1.elf section `.bss' is not within region `data'address 0x802942 of LUFA_PROJECTS_USB_TO_SERIAL1.elf section `.data' is not within region `data'address 0xff784202 of LUFA_PROJECTS_USB_TO_SERIAL1.elf section `.bss' is not within region `data'collect2.exe(0,0): error: ld returned 1 exit status
+		make: *** [LUFA_PROJECTS_USB_TO_SERIAL1.elf] Error 1
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a succeeded
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/libc.so failed
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libc.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51/libc.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libc.a failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/libc.so failed
+		attempt to open d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a succeeded
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)abort.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)setjmp.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)memcpy_P.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)strlen_P.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)memcmp.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)memcpy.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)memmove.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)memset.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)strchr.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)strcmp.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)strncmp.o
+		(d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a)iob.o
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51/libat90usb1287.so failed
+		attempt to open D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libat90usb1287.a succeeded
+		(D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libat90usb1287.a)eerd_byte.o
+		(D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/at90usb1287/avr51\libat90usb1287.a)eeupd_byte.o
+C:\Users\Alastair\Documents\GitHub\micropython\ports\avr8\Debug\Makefile(562,1): error: recipe for target 'LUFA_PROJECTS_USB_TO_SERIAL1.elf' failed
+		The command exited with code 2.
+	Done executing task "RunCompilerTask" -- FAILED.
+Done building target "CoreBuild" in project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj" -- FAILED.
+Done building project "LUFA_PROJECTS_USB_TO_SERIAL1.cproj" -- FAILED.
+
+Build FAILED.
+========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========
+### Reason: Linker Script for avr8 architecture avr:51 does not move .data and .bss to section data (RAM)
+### Solution: Compile with -Wl, --verbose and specify linker.ld augments script manually

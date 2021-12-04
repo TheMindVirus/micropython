@@ -391,7 +391,7 @@ void gc_info(gc_info_t *info) {
     GC_ENTER();
     info->total = MP_STATE_MEM(gc_pool_end) - MP_STATE_MEM(gc_pool_start);
     info->used = 0;
-    info->free = 0;
+    info->_free = 0;
     info->max_free = 0;
     info->num_1block = 0;
     info->num_2block = 0;
@@ -401,7 +401,7 @@ void gc_info(gc_info_t *info) {
         size_t kind = ATB_GET_KIND(block);
         switch (kind) {
             case AT_FREE:
-                info->free += 1;
+                info->_free += 1;
                 len_free += 1;
                 len = 0;
                 break;
@@ -447,7 +447,7 @@ void gc_info(gc_info_t *info) {
     }
 
     info->used *= BYTES_PER_BLOCK;
-    info->free *= BYTES_PER_BLOCK;
+    info->_free *= BYTES_PER_BLOCK;
     GC_EXIT();
 }
 
@@ -815,7 +815,7 @@ void gc_dump_info(void) {
     gc_info_t info;
     gc_info(&info);
     mp_printf(&mp_plat_print, "GC: total: %u, used: %u, free: %u\n",
-        (uint)info.total, (uint)info.used, (uint)info.free);
+        (uint)info.total, (uint)info.used, (uint)info._free);
     mp_printf(&mp_plat_print, " No. of 1-blocks: %u, 2-blocks: %u, max blk sz: %u, max free sz: %u\n",
         (uint)info.num_1block, (uint)info.num_2block, (uint)info.max_block, (uint)info.max_free);
 }

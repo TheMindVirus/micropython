@@ -35,6 +35,8 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../src/ \
 ../src/config/ \
+../src/genhdr/compress \
+../src/genhdr/qstr \
 ../src/LUFA/ \
 ../src/LUFA/LUFA/ \
 ../src/LUFA/LUFA/Common/ \
@@ -53,11 +55,13 @@ SUBDIRS :=  \
 ../src/LUFA/LUFA/Drivers/USB/Core/ \
 ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/ \
 ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/ \
-../src/LUFA/LUFA/Platform/
+../src/LUFA/LUFA/Platform/ \
+../src/genhdr
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../src/mphal.c \
 ../src/USBtoSerial.c \
 ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c \
 ../src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.c \
@@ -103,6 +107,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+src/mphal.o \
 src/USBtoSerial.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o \
 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o \
@@ -141,6 +146,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
 
 OBJS_AS_ARGS +=  \
+src/mphal.o \
 src/USBtoSerial.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o \
 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o \
@@ -179,6 +185,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
 
 C_DEPS +=  \
+src/mphal.d \
 src/USBtoSerial.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d \
 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.d \
@@ -217,6 +224,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.d
 
 C_DEPS_AS_ARGS +=  \
+src/mphal.d \
 src/USBtoSerial.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d \
 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.d \
@@ -268,255 +276,262 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+src/mphal.o: ../src/mphal.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/USBtoSerial.o: ../src/USBtoSerial.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o: ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o: ../src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o: ../src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o: ../src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o: ../src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o: ../src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o: ../src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/Events.o: ../src/LUFA/LUFA/Drivers/USB/Core/Events.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o: ../src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o: ../src/LUFA/LUFA/Drivers/USB/Core/USBTask.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=8000000UL -DF_USB=8000000UL -DARCH=ARCH_AVR8 -DUSE_LUFA_CONFIG_HEADER -DBOARD=BOARD_USBKEY -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../src/LUFA" -I"../src" -I"../src/config" -I"../../.." -I"../../../inc" -I"../../minimal" -I"../genhdr"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -c -mrelax -std=gnu99 -fno-strict-aliasing -fno-jump-tables -Wno-unknown-pragmas -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
@@ -546,7 +561,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="LUFA_PROJECTS_USB_TO_SERIAL1.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -Wl,--relax  
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="LUFA_PROJECTS_USB_TO_SERIAL1.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -Wl,-section-start=.data=0x800000 -Wl,-section-start=.bss=-0x880000  -mmcu=at90usb1287 -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\at90usb1287" -Wl,--verbose  
 	@echo Finished building target: $@
 	"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "LUFA_PROJECTS_USB_TO_SERIAL1.elf" "LUFA_PROJECTS_USB_TO_SERIAL1.hex"
 	"D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "LUFA_PROJECTS_USB_TO_SERIAL1.elf" "LUFA_PROJECTS_USB_TO_SERIAL1.eep" || exit 0

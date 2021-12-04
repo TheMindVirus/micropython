@@ -92,10 +92,10 @@
 
 // Link to MicroPython Source Statically without using Libraries
 
-#include "py/compile.c"
-#include "py/runtime.c"
-#include "py/gc.c"
-#include "py/stackctrl.c"
+//#include "py/compile.c"
+//#include "py/runtime.c"
+//#include "py/gc.c"
+//#include "py/stackctrl.c"
 
 // What other C files actually get included by MicroPython?
 /*
@@ -236,6 +236,14 @@
 #include "py/smallint.c"
 #include "py/frozenmod.c"
 
+#include "ports/minimal/uart_core.c"
+
+#include "shared/libc/printf.c"
+#include "shared/readline/readline.c"
+#include "shared/runtime/pyexec.c"
+#include "shared/runtime/stdout_helpers.c"
+
+/*
 #include "extmod/moduasyncio.c"
 #include "extmod/moductypes.c"
 #include "extmod/modujson.c"
@@ -278,7 +286,7 @@
 
 #include "shared/libc/abort_.c"
 #include "shared/libc/printf.c"
-/*
+
 #include "ports/unix/main.c"
 #include "ports/unix/gccollect.c"
 #include "ports/unix/unix_mphal.c"
@@ -289,15 +297,16 @@
 #include "ports/unix/alloc.c"
 #include "ports/unix/coverage.c"
 #include "ports/unix/fatfs_port.c"
-*/
 
-#include "ports/minimal/uart_core.c"
+//#include "ports/minimal/uart_core.c"
 
-#include "shared/runtime/gchelper_generic.c"
+//#include "shared/runtime/gchelper_generic.c"
 
-#include "shared/timeutils/timeutils.c"
+//#include "shared/timeutils/timeutils.c"
 
 // Now the problem is redeclarations of gcc-native instructions and no avr8-specific instructions...
+
+*/
 
 #pragma endregion
 // DEFINITIONS

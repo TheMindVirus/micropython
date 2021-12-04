@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\mphal.c
+
 src\USBtoSerial.c
 
 src\LUFA\LUFA\Drivers\Peripheral\AVR8\Serial_AVR8.c
