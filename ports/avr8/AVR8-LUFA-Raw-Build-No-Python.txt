@@ -181,3 +181,11 @@ Done building project "LUFA_PROJECTS_USB_TO_SERIAL_MIN.cproj".
 
 Build succeeded.
 ========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========
+
+Edit: The Program and Data Memory Usage Percentages are incorrect for a standard ATMEGA16U2.
+      A 16U2 has 16KB of Flash Program Memory and 512B of EEPROM Data Memory.
+      The updated figures should be as follows:
+          Program Memory Usage: 4286/16384 bytes   26.1% Used
+          Data Memory Usage: 320/512 bytes   62.5% Used
+      The stock LUFA firmware still fits onto the device but without optimising embedded python
+      by removing unnecessary strings it will struggle to fit in the remaining space in memory.
