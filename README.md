@@ -1,6 +1,7 @@
 # MicroPython
 
-<video src="https://www.youtube.com/watch?v=07vG-_CcDG0" alt="CircuitPython"></video>
+<!--<video src="https://www.youtube.com/watch?v=07vG-_CcDG0" alt="CircuitPython"></video>-->
+<video><source src="https://www.youtube.com/watch?v=07vG-_CcDG0"></source></video>
 
 Experimental Port of The MicroPython Project to 8-Bit AVR Architecture Devices, 
 specifically the Atmega16U2 found on the Arduino USB2SERIAL and Arduino UNO Boards.
@@ -22,6 +23,14 @@ https://github.com/micropython/micropython/tree/master/examples/embedding
 #### Additional Credits:
  * Moco/LUFA USB Firmware for AVR Microcontrollers - Dean Camera @ FourWalledCubicle
  * Arduino, Atmel, Adafruit Industries, Microchip, Microsoft, Raspberry Pi Foundation, et al.
+
+#### Deployment Issues:
+
+The connector that comes with the standard Atmel-ICE Debugger has a nub which prevents it from being plugged in \
+the wrong way round in most cases. Unfortunately, it prevents connection the right way round on the Atmega16u2 \
+found on the Arduino Uno Rev3. You will need a 2x3 2.54mm Pitch Standoff Header as pictured to connect it properly.
+
+![img](/IMG_5594.jpg)
 
 ### WARNING: This project is in beta stage and is subject to changes of the code-base, including project-wide name changes and API changes.
 
